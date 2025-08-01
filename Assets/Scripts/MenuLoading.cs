@@ -8,21 +8,25 @@ public class MenuLoading : MonoBehaviour
     public TextMeshProUGUI percentage;
     private bool isShaking;
     public int percentageValue = 0;
-    public int time = 0;
-    public int speed = 0;
-
+    private float progressTimer = 0f;
+    private float nextProgressTime = 0.1f;
     void Update()
     {
-        if (time > speed && percentageValue < 99)
+        if (percentageValue < 99)
         {
-            percentageValue++;
-            percentage.text = percentageValue.ToString() + "%";
-            speed = Random.Range(1, 33) * Random.Range(-1 , 3);
-            time = 0;
-        }
-        else if (percentageValue < 99)
-        {
-            time++;
+            progressTimer += Time.deltaTime;
+
+            if (progressTimer >= nextProgressTime)
+            {
+                percentageValue++;
+                percentage.text = percentageValue + "%";
+
+                // Reset timer
+                progressTimer = 0f;
+
+                // Randomize next wait time between increments (makes it fast/slow randomly)
+                nextProgressTime = Random.Range(0.01f, 0.20f);
+            }
         }
             
         if (Input.GetMouseButtonDown(0))
