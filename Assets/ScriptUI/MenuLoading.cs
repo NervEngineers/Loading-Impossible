@@ -39,7 +39,7 @@ namespace ScriptUI
                         StartCoroutine(ShakeAnimation());
                     }
                 }
-                else if (hit != null && hit.gameObject == gameObject)
+                else if (hit != null && hit.gameObject == gameObject && percentage.text == "99%")
                 {
                     StartCoroutine(DropLoadingAnimation());
                 }
