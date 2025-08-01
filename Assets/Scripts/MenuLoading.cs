@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MenuLoading : MonoBehaviour
 {
-    public Animator anim;
+    public Animator loadingAnim;
+    public Animator cameraAnim;
     public TextMeshProUGUI percentage;
     private bool isShaking;
     public int percentageValue = 0;
@@ -50,16 +51,17 @@ public class MenuLoading : MonoBehaviour
 
     IEnumerator ShakeAnimation()
     {
-        anim.SetBool("Shake", true);
+        loadingAnim.SetBool("Shake", true);
         isShaking = true;
         yield return new WaitForSeconds(1f);
-        anim.SetBool("Shake", false);
+        loadingAnim.SetBool("Shake", false);
         isShaking = false;
     }
 
     IEnumerator DropLoadingAnimation()
     {
-        anim.SetBool("Drop", true);
+        loadingAnim.SetBool("Drop", true);
+        cameraAnim.SetBool("Down" , true);
         isShaking = true;
         percentage.text = "YOU RUINED IT";
         yield return new WaitForSeconds(6);
