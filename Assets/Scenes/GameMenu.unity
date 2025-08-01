@@ -1346,7 +1346,6 @@ GameObject:
   - component: {fileID: 1494718883}
   - component: {fileID: 1494718885}
   - component: {fileID: 1494718884}
-  - component: {fileID: 1494718886}
   m_Layer: 5
   m_Name: Percentage
   m_TagString: Untagged
@@ -1472,18 +1471,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494718882}
   m_CullTransparentMesh: 1
---- !u!114 &1494718886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1494718882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04bf259c4adac854d884aeb1db50516b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1746024616
 GameObject:
   m_ObjectHideFlags: 0
