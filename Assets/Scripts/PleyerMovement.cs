@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _jumppower;
     [SerializeField] private bool _onground;
     private float horizontalInput;
-    public Animator animator;
 
     public void Flip()
     {
@@ -27,31 +26,13 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
 
-        if (horizontalInput < 0)
-        {
-            animator.SetBool("Idle", false);
-            animator.SetBool("Right", false);
-            animator.SetBool("Left", true);
-        }
-        else if (horizontalInput > 0)
-        {
-            animator.SetBool("Idle", false);
-            animator.SetBool("Right", true);
-            animator.SetBool("Left", false);
-        }
-        else
-        {
-            animator.SetBool("Idle", true);
-            animator.SetBool("Right", false);
-            animator.SetBool("Left", false);        }
-
         if (horizontalInput > 0)
         {
             _visual.transform.localScale = new Vector3(1, 1, 1);
         }
         else if (horizontalInput < 0)
         {
-            _visual.transform.localScale = new Vector3(-1, 1, 1);
+            _visual.transform.localScale = new Vector3(-1, 1, 1); 
         }
 
         if (Input.GetKeyDown(KeyCode.W) && _onground)

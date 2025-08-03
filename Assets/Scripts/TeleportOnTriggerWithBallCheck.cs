@@ -1,20 +1,16 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TeleportOnTriggerWithBallCheck : MonoBehaviour
 {
     [SerializeField] private Transform locationA;
-    [SerializeField] private Transform locationB;
+    public string sceneName;
     [SerializeField] private string teleportTag = "TeleportZone";
 
     public CollectLoading collectScript; // Drag and drop this in the Inspector
 
     private void Start()
     {
-        if (locationA != null)
-        {
-            transform.position = locationA.position;
-        }
-
         if (collectScript == null)
         {
             Debug.LogWarning("CollectLoading script not assigned!");
@@ -27,8 +23,14 @@ public class TeleportOnTriggerWithBallCheck : MonoBehaviour
         {
             if (collectScript.ball >= 8)
             {
-                transform.position = locationB.position;
-            }
+                if (!string.IsNullOrEmpty(sceneName))
+                {
+                    SceneManager.LoadScene(sceneName);
+                }
+                else
+                {
+                    Debug.LogWarning("Scene name is empty. Please assign a scene name.");
+                }            }
             else
             {
                 Debug.Log("You need at least 8 balls to teleport.");
