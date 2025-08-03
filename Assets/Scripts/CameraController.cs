@@ -37,7 +37,7 @@ namespace CameraControlle
         public float lowerDeadBound = 0;
 
         // private
-        Camera camera;
+        Camera _camera;
         Vector3 velocity = Vector3.zero;
         float vertExtent;
         float horzExtent;
@@ -52,11 +52,11 @@ namespace CameraControlle
 
         void Start()
         {
-            camera = GetComponent<Camera>();
-            vertExtent = camera.orthographicSize;
+            _camera = GetComponent<Camera>();
+            vertExtent = _camera.orthographicSize;
             horzExtent = vertExtent * Screen.width / Screen.height;
-            deltaCenterVec = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0))
-                - camera.ViewportToWorldPoint(new Vector3(cameraCenterX, cameraCenterY, 0));
+            deltaCenterVec = _camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0))
+                - _camera.ViewportToWorldPoint(new Vector3(cameraCenterX, cameraCenterY, 0));
 
 
             isFollowHorizontal = (followType & Direction.Horizontal) == Direction.Horizontal;
@@ -73,7 +73,7 @@ namespace CameraControlle
         {
             if (target)
             {
-                Vector3 delta = target.position - camera.ViewportToWorldPoint(new Vector3(cameraCenterX, cameraCenterY, 0));
+                Vector3 delta = target.position - _camera.ViewportToWorldPoint(new Vector3(cameraCenterX, cameraCenterY, 0));
 
                 if (!isFollowHorizontal)
                 {

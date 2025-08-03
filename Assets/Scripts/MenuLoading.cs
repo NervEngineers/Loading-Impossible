@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuLoading : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class MenuLoading : MonoBehaviour
     public int percentageValue = 0;
     private float progressTimer = 0f;
     private float nextProgressTime = 0.1f;
+    public string sceneName;
     void Update()
     {
         if (percentageValue < 99)
@@ -64,6 +66,14 @@ public class MenuLoading : MonoBehaviour
         cameraAnim.SetBool("Down" , true);
         isShaking = true;
         percentage.text = "YOU RUINED IT";
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(9);
+        if (!string.IsNullOrEmpty(sceneName))
+        {
+            SceneManager.LoadScene(sceneName);
+        }
+        else
+        {
+            Debug.LogWarning("Scene name is empty. Please assign a scene name.");
+        }
     }
 }

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class CollectLoading : MonoBehaviour
@@ -5,6 +6,7 @@ public class CollectLoading : MonoBehaviour
     public int ball = 0;
 
     private Collider2D currentTrigger = null;
+    public TextMeshProUGUI textMeshProUGUI;
 
     private void Update()
     {
@@ -12,6 +14,7 @@ public class CollectLoading : MonoBehaviour
         {
             ball++;
             Debug.Log("Ball count: " + ball);
+            textMeshProUGUI.text = ball.ToString() + "/8 Loading";
 
             Destroy(currentTrigger.gameObject);
 
