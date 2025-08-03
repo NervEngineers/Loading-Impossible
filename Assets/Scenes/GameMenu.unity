@@ -715,6 +715,7 @@ MonoBehaviour:
   cameraAnim: {fileID: 519420033}
   percentage: {fileID: 1494718884}
   percentageValue: 0
+  sceneName: Level
 --- !u!58 &632143828
 CircleCollider2D:
   m_ObjectHideFlags: 0
